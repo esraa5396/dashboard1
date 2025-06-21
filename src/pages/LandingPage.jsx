@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Typography, Button, Grid, Box, AppBar, Toolbar, Link, useTheme, useMediaQuery } from '@mui/material';
 import dashboardImage from '../Images/dashboardImage.png'
 import { useNavigate } from 'react-router-dom';
@@ -69,6 +69,14 @@ const LandingPage = () => {
   const isSmallMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [isLandingVisible, setLandingVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLandingVisible(true);
+    }, 100); // A small delay to ensure the transition triggers
+    return () => clearTimeout(timer);
+  }, []);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -176,7 +184,12 @@ const LandingPage = () => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ 
+          flexGrow: 1,
+          opacity: isLandingVisible ? 1 : 0,
+          transform: isLandingVisible ? 'translateY(0)' : 'translateY(-20px)',
+          transition: 'opacity 1s ease-in-out, transform 1s ease-in-out',
+        }}>
         <AppBar position="static">
           <Toolbar sx={{ 
             px: { xs: 2, sm: 3, md: 4 },
@@ -293,7 +306,10 @@ const LandingPage = () => {
           justifyContent: 'center',
           py: { xs: 4, sm: 6, md: 8 },
           px: { xs: 2, sm: 3, md: 4 },
-          maxWidth: { xs: '100%', md: '100%', lg: '100%' }
+          maxWidth: { xs: '100%', md: '100%', lg: '100%' },
+          opacity: isLandingVisible ? 1 : 0,
+          transform: isLandingVisible ? 'translateY(0)' : 'translateY(20px)',
+          transition: 'opacity 1s ease-in-out, transform 1s ease-in-out',
         }}
         
       >
