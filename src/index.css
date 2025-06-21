@@ -6,6 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color:var(--tertiary-color);
+  /* Improve mobile touch handling */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 code {
@@ -16,4 +19,33 @@ code {
   --primary-color: #426572;
   --secondary-color: #592411;
   --tertiary-color: #FBF8EF;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Prevent zoom on input focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
+  /* Improve button touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Prevent text selection on buttons */
+  button, .MuiButton-root {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Ensure proper touch handling for form elements */
+  form {
+    touch-action: manipulation;
+  }
 }

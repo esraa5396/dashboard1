@@ -13,7 +13,9 @@ import {
   CircularProgress,
   Alert,
   Checkbox,
-  FormControlLabel
+  FormControlLabel,
+  useTheme,
+  useMediaQuery
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useNavigate } from 'react-router-dom';
@@ -31,6 +33,8 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState('');
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleChange = (e) => {
     const { name, value, checked, type } = e.target;
@@ -86,6 +90,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setApiError('');
 
     if (validateForm()) {
@@ -113,13 +118,29 @@ const Register = () => {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 4,
+          marginTop: { xs: 2, sm: 4 },
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          minHeight: { xs: '100vh', sm: 'auto' },
+          padding: { xs: 1, sm: 0 },
+          '& input': {
+            fontSize: '16px !important'
+          }
         }}
       >
-        <Paper elevation={3} sx={{ padding: 4, width: '100%' }}>
+        <Paper 
+          elevation={3} 
+          sx={{ 
+            padding: { xs: 2, sm: 4 }, 
+            width: '100%',
+            maxWidth: { xs: '100%', sm: '600px' },
+            margin: { xs: 'auto', sm: 0 },
+            touchAction: 'manipulation',
+            WebkitUserSelect: 'none',
+            userSelect: 'none'
+          }}
+        >
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
@@ -135,7 +156,24 @@ const Register = () => {
             </Alert>
           )}
 
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box 
+            component="form" 
+            noValidate 
+            onSubmit={handleSubmit} 
+            sx={{ 
+              mt: 3,
+              '& .MuiButton-root': {
+                minHeight: { xs: '48px', sm: 'auto' },
+                fontSize: { xs: '1rem', sm: 'inherit' },
+                touchAction: 'manipulation',
+                WebkitTapHighlightColor: 'transparent',
+                '&:active': {
+                  transform: 'scale(0.98)',
+                  transition: 'transform 0.1s ease'
+                }
+              }
+            }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -151,6 +189,11 @@ const Register = () => {
                   error={!!errors.firstName}
                   helperText={errors.firstName}
                   disabled={loading}
+                  sx={{
+                    '& .MuiInputBase-root': {
+                      minHeight: { xs: '56px', sm: 'auto' }
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -166,6 +209,11 @@ const Register = () => {
                   error={!!errors.lastName}
                   helperText={errors.lastName}
                   disabled={loading}
+                  sx={{
+                    '& .MuiInputBase-root': {
+                      minHeight: { xs: '56px', sm: 'auto' }
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -181,6 +229,11 @@ const Register = () => {
                   error={!!errors.email}
                   helperText={errors.email}
                   disabled={loading}
+                  sx={{
+                    '& .MuiInputBase-root': {
+                      minHeight: { xs: '56px', sm: 'auto' }
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -197,6 +250,11 @@ const Register = () => {
                   error={!!errors.password}
                   helperText={errors.password}
                   disabled={loading}
+                  sx={{
+                    '& .MuiInputBase-root': {
+                      minHeight: { xs: '56px', sm: 'auto' }
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -212,6 +270,11 @@ const Register = () => {
                   error={!!errors.confirmPassword}
                   helperText={errors.confirmPassword}
                   disabled={loading}
+                  sx={{
+                    '& .MuiInputBase-root': {
+                      minHeight: { xs: '56px', sm: 'auto' }
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -223,6 +286,11 @@ const Register = () => {
                       checked={formData.acceptTerms}
                       onChange={handleChange}
                       disabled={loading}
+                      sx={{
+                        '& .MuiSvgIcon-root': {
+                          fontSize: { xs: '1.5rem', sm: '1.25rem' }
+                        }
+                      }}
                     />
                   }
                   label={
@@ -230,9 +298,16 @@ const Register = () => {
                       I agree to the <Link href="/terms" target="_blank">Terms and Conditions</Link>
                     </span>
                   }
+                  sx={{
+                    alignItems: 'flex-start',
+                    '& .MuiFormControlLabel-label': {
+                      fontSize: { xs: '0.875rem', sm: 'inherit' },
+                      lineHeight: { xs: 1.4, sm: 1.5 }
+                    }
+                  }}
                 />
                 {errors.acceptTerms && (
-                  <Typography color="error" variant="body2">
+                  <Typography color="error" variant="body2" sx={{ ml: 4, mt: 0.5 }}>
                     {errors.acceptTerms}
                   </Typography>
                 )}
@@ -242,8 +317,41 @@ const Register = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, py: 1.5 }}
+              sx={{ 
+                mt: 3, 
+                mb: 2, 
+                py: { xs: 1.5, sm: 1.5 },
+                px: { xs: 2, sm: 3 },
+                fontSize: { xs: '1rem', sm: 'inherit' },
+                fontWeight: 600,
+                borderRadius: 2,
+                boxShadow: 3,
+                touchAction: 'manipulation',
+                WebkitTapHighlightColor: 'transparent',
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+                position: 'relative',
+                zIndex: 1,
+                '&:hover': {
+                  boxShadow: 6,
+                  transform: 'translateY(-1px)',
+                  transition: 'all 0.2s ease'
+                },
+                '&:active': {
+                  transform: 'translateY(0)',
+                  boxShadow: 3
+                },
+                '&:disabled': {
+                  opacity: 0.7
+                },
+                '@media (max-width: 600px)': {
+                  '&:focus': {
+                    outline: 'none'
+                  }
+                }
+              }}
               disabled={loading}
+              onClick={handleSubmit}
             >
               {loading ? (
                 <CircularProgress size={24} color="inherit" />
@@ -253,7 +361,18 @@ const Register = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link 
+                  href="/login" 
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '0.875rem', sm: 'inherit' },
+                    padding: { xs: '8px 4px', sm: '4px' },
+                    display: 'inline-block',
+                    '&:hover': {
+                      textDecoration: 'underline'
+                    }
+                  }}
+                >
                   Already have an account? Sign in
                 </Link>
               </Grid>
