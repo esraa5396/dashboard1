@@ -134,7 +134,7 @@ const LandingPage = () => {
           Sign In
         </Button>
       </MenuItem>
-      <MenuItem onClick={() => { handleMobileMenuClose(); navigate('/signup'); }}>
+      <MenuItem onClick={() => { handleMobileMenuClose(); navigate('/register'); }}>
         <Button color="secondary" variant="contained" fullWidth sx={{ fontWeight: 600 }}>
           Sign Up
         </Button>
