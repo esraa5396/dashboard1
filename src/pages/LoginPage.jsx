@@ -244,7 +244,7 @@ const Loginpage = () => {
               </Grid>
             </Grid>
             
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="flex-start">
               <Grid item>
                 <Link href="/register" variant="body2">
                   Don't have an account? Sign Up
