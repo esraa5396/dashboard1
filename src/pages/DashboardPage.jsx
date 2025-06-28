@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
+import DashboardLayout from '../components/DashboardLayout';
+import DashboardCards from '../components/DashboardCards';
 
-export default function DashboardPage() {
+const DashboardPage = () => {
   return (
-    <div>DashboardPage</div>
-  )
-}
+    <DashboardLayout>
+      <DashboardCards />
+    </DashboardLayout>
+  );
+};
+
+export default DashboardPage;
