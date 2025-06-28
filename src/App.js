@@ -26,22 +26,24 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route 
+          <Route path='/dashboard' element={<DashboardPage/>}/>
+          {/* <Route 
             path="/" 
             element={
               isAuthenticated() ? 
                 <Navigate to="/dashboard" replace /> : 
                 <Navigate to="/login" replace />
             } 
-          />
-          <Route
+          /> */}
+          {/* <Route
           path="/dashboard"
           element={
             <PrivateRoute>
               <DashboardPage />
             </PrivateRoute>
           }
-        />
+        /> */}
+        
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
