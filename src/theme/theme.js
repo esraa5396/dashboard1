@@ -43,6 +43,33 @@ const theme = createTheme({
     body2: {
       color: palette.text.secondary,
     },
+    body3: {
+      color: palette.text.secondary,
+      '@media (max-width: 1140px)': {
+        display: 'none',
+      },
+    },
+    textcards: {
+      color:'#777',
+      fontSize:'14px',
+      fontWeight:'300',
+      '@media (min-width:600px)': {
+      fontSize: '12px',
+    },
+    '@media (min-width:900px)': {
+      fontSize: '14px',
+    },
+    '@media (max-width:600px)':{
+      fontSize: '10px',
+    }
+    },
+    textcards2: {
+      fontSize:'35px',
+      fontWeight:'100',
+    },
+    textheader:{
+      
+    }
   },
   components: {
     MuiAppBar: {
@@ -52,6 +79,41 @@ const theme = createTheme({
           color: palette.secondary.contrastText,
         },
       },
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        tbar: {
+          '@media (max-width: 1140px)': {
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            gap: 3,
+          },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        headerPaper: {
+          '@media (max-width: 1140px)': {
+            justifyContent: 'space-between',
+            width: '100%',
+            alignItems: 'center',
+            
+          },
+        },
+      },
+      variants: [
+        {
+          props: { variant: 'headercards' },
+          style: {
+            backgroundColor: palette.footerbg.quaternary,
+            color: palette.secondary.contrastText,
+            borderRadius: 1,
+            padding: 10,
+          },
+        },
+      ],
     },
     MuiButton: {
       styleOverrides: {
@@ -86,7 +148,6 @@ const theme = createTheme({
             transition: 'all 0.3s ease'
           },
         },
-
       },
     },
     MuiLink: {
@@ -99,6 +160,34 @@ const theme = createTheme({
         },
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderColor: palette.footerbg.quaternary,
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.16)',
+        },
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          borderColor: 'lightgray',
+        },
+      },
+    },
+    MuiGrid:{
+      variants: [
+        {
+          props: { variant: 'gridbox' },
+          style: {
+            flexDirection: 'row',
+            '@media (max-width:973px)': {
+              flexDirection: 'column',
+            }
+          }
+        }
+      ]
+    }
   },
 });
 

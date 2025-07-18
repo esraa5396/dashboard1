@@ -175,7 +175,7 @@ const Register = () => {
             }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6} sx={{ width: { xs: '100%', sm: 'auto' } }}>
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
@@ -196,7 +196,7 @@ const Register = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6} sx={{ width: { xs: '100%', sm: 'auto' } }}>
                 <TextField
                   required
                   fullWidth
@@ -216,7 +216,7 @@ const Register = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{ width: { xs: '100%', sm: 'auto' } }}>
                 <TextField
                   required
                   fullWidth
@@ -236,7 +236,7 @@ const Register = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{ width: { xs: '100%', sm: 'auto' } }}>
                 <TextField
                   required
                   fullWidth
@@ -257,7 +257,7 @@ const Register = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{ width: { xs: '100%', sm: 'auto' } }}>
                 <TextField
                   required
                   fullWidth
@@ -359,7 +359,7 @@ const Register = () => {
                 'Sign Up'
               )}
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="flex-start">
               <Grid item>
                 <Link 
                   href="/login" 
