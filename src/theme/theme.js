@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import palette from './palette';
+import { Margin } from '@mui/icons-material';
 
 const theme = createTheme({
   palette: {
@@ -68,7 +69,17 @@ const theme = createTheme({
       fontWeight:'100',
     },
     textheader:{
-      
+      fontSize:'16px',
+      color:palette.text.secondary,
+      '@media (min-width:600px)': {
+      fontSize: '12px',
+    },
+    '@media (min-width:900px)': {
+      fontSize: '14px',
+    },
+    '@media (max-width:600px)':{
+      fontSize: '10px',
+    }
     }
   },
   components: {
@@ -185,7 +196,34 @@ const theme = createTheme({
               flexDirection: 'column',
             }
           }
-        }
+        },
+        {
+          props: { variant: 'handlebox'},
+          style: {
+            '@media (max-width:430px)':{
+              width:'100%'
+            }
+          }
+        },
+        {
+          props: { variant: 'gridbox2' },
+          style: {
+            flexDirection: 'row',
+            '@media (max-width:385px)': {
+              flexDirection: 'column',
+            }
+          }
+        },
+        {
+          props: { variant: 'gridbox3' },
+          style: {
+            
+            '@media (max-width:385px)': {
+              width:'90%'
+            }
+          }
+        },
+        
       ]
     }
   },
