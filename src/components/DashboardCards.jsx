@@ -261,7 +261,7 @@ const DashboardCards = () => {
   const activePercentage = Math.round((data.itemDetails.activeItems / data.itemDetails.allItems) * 100);
 
   return (
-    <Box sx={{ padding: 2, paddingTop: 0 }}>
+    <Box sx={{ padding: {xs:0.5,md:2}, paddingTop: 0  }}>
 
       {/* Auto-refresh indicator */}
       <Box sx={{ 
@@ -272,7 +272,7 @@ const DashboardCards = () => {
         p: 1, 
         backgroundColor: '#f8f9fa', 
         borderRadius: 1,
-        fontSize: '12px',
+        fontSize: {xs: '10px', md: '12px'},
         color: '#666'
       }}>
         <span>
@@ -304,7 +304,7 @@ const DashboardCards = () => {
           <Grid item xs={12} md={12} lg={8} sx={{flex: { xs: 'unset', md: 1 },width:{xs:'100%'}, marginBottom:{xs: 5, lg: 0}}}>
             <Card variant="outlined">
               <Paper variant="headercards">
-                <Typography fontWeight="bold" mb={1}>Sales Activity</Typography>
+                <Typography variant='textheader' fontWeight="bold" mb={1}>Sales Activity</Typography>
               </Paper>
               <Divider/>
               <Grid container p={1.8}>
@@ -327,7 +327,7 @@ const DashboardCards = () => {
           <Grid item xs={12} md={12} sx={{flex: { xs: 'unset', md: 0.5 },width:{xs:'100%'}}} >
             <Card variant="outlined" sx={{ height:'100%', boxSizing: 'border-box'}}>
               <Paper variant="headercards">
-                <Typography  fontWeight="bold" mb={1}>Inventory Summary</Typography>
+                <Typography variant='textheader' fontWeight="bold" mb={1}>Inventory Summary</Typography>
               </Paper>
               <Divider/>
               <Box sx={{ p: 2, height: '75%', display:'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -349,14 +349,14 @@ const DashboardCards = () => {
 
       <Grid container spacing={3} variant='gridbox' mb={7}>
         {/* Item Details */}
-        <Grid item xs={12} md={8}  sx={{flex: { xs: 'unset', md: 1,mb:{xs:5,lg:0} }}}>
+        <Grid item xs={12} md={8} sx={{flex: { xs: 'unset', md: 1,mb:{xs:5,lg:0} }}}>
           <Card variant="outlined"  sx={{ height:'100%', boxSizing: 'border-box'}}>
             <Paper variant="headercards">
-              <Typography  fontWeight="bold" mb={1}>Item Details</Typography>
+              <Typography variant='textheader' fontWeight="bold" mb={1}>Item Details</Typography>
             </Paper>
             <Divider/>
-            <Grid container spacing={2} >
-            <Grid size={6} display="flex" flexDirection="column" justifyContent="space-between" sx={{ p: 2, pr:{xs:'0',md:2} }} >
+            <Grid container spacing={2} variant='gridbox2'>
+            <Grid variant='gridbox3' size={6} display="flex" flexDirection="column" justifyContent="space-between" sx={{ p: 2, pr:{xs:'0',md:2}}} >
               <Box display="flex" justifyContent="space-between">
                 <Typography sx={{ color: 'red', fontSize: {xs:'11px',md:'14px'} }}>Low Stock Items</Typography>
                 <Typography fontWeight="bold" sx={{fontSize:{xs:'12px',md:'16px'}}}>{data.itemDetails.lowStock}</Typography>
@@ -371,9 +371,9 @@ const DashboardCards = () => {
               </Box>
             
             </Grid>
-            <Divider orientation="vertical" variant="middle" flexItem  sx={{borderColor:'lightgray'}} />
+            <Divider orientation="vertical" variant="middle"  flexItem  sx={{borderColor:'lightgray'}} />
 
-            <Grid item xs={5} sx={{ 
+            <Grid variant='gridbox3' item xs={5} sx={{ 
             p: 2, 
             display: 'flex', 
             flexDirection: 'column', 
@@ -381,7 +381,7 @@ const DashboardCards = () => {
             alignItems: 'center' ,
             width:'40%'
           }}>
-            <Typography color="#999" mb={1} sx={{textAlign:'center', justifyContent:'center'}}>Active Items</Typography>
+            <Typography color="#999" mb={1} sx={{textAlign:'center', justifyContent:'center',fontSize:{xs:'12px',sm:'16px'}}}>Active Items</Typography>
             <Box sx={{ 
               position: 'relative',
               display: 'inline-flex',
@@ -445,7 +445,7 @@ const DashboardCards = () => {
           <Card variant="outlined" sx={{ height:'100%', boxSizing: 'border-box'}}>
           <Paper variant="headercards">
             <Box display="flex" justifyContent="space-between" alignItems="center" >
-              <Typography  fontWeight="bold">Top Selling Items</Typography>
+              <Typography variant='textheader' fontWeight="bold">Top Selling Items</Typography>
               {/* <select value={timePeriod} onChange={handlePeriodChange} 
                 style={{ 
                   fontSize: '12px', 
@@ -470,7 +470,7 @@ const DashboardCards = () => {
                     value={topSellingTimePeriod}
                     onChange={(e) => setTopSellingTimePeriod(e.target.value)}
                     sx={{
-                      fontSize: '14px',
+                      fontSize: {xs: '12px', md: '14px'},
                       border: 'none',
                       background: 'transparent',
                       boxShadow: 'none',
@@ -567,7 +567,7 @@ const DashboardCards = () => {
             alignItems: 'center', 
             p: 2 
           }}>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="textcards" color="text.secondary">
               No items were invoiced in this time frame
             </Typography>
           </Box>
@@ -580,7 +580,7 @@ const DashboardCards = () => {
     {/* Purchase Order and Sales Order Section */}
     <Grid container spacing={3} variant='gridbox' mb={3} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
         {/* Purchase Order */}
-        <Grid item xs={12} sm={12} md={4} lg={3} sx={{ 
+        <Grid item variant='handlebox' xs={12} sm={12} md={4} lg={3} sx={{ 
           mb: { xs: 3, md: 0 },
           order: { xs: 1, md: 1 },
           flex: { xs: 'unset', md: 0.4}
@@ -597,7 +597,7 @@ const DashboardCards = () => {
               flexWrap: { xs: 'wrap', md: 'nowrap', },
               gap: 1
             }}>
-              <Typography fontWeight="bold" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>Purchase Order</Typography>
+              <Typography variant='textheader' fontWeight="bold" >Purchase Order</Typography>
               {/* <select 
                 value={timePeriod} 
                 onChange={handlePeriodChange} 
@@ -625,7 +625,7 @@ const DashboardCards = () => {
                     value={purchaseOrderTimePeriod}
                     onChange={(e) => setPurchaseOrderTimePeriod(e.target.value)}
                     sx={{
-                      fontSize: '14px',
+                      fontSize: {xs: '12px', md: '14px'},
                       border: 'none',
                       background: 'transparent',
                       boxShadow: 'none',
@@ -685,7 +685,9 @@ const DashboardCards = () => {
         <Grid item xs={12} sm={12} md={8} lg={9} sx={{ 
           order: { xs: 2, md: 2 },
           flex: { xs: 'unset', md: 1}
-        }}>
+        }}
+        variant='handlebox'
+        >
           <Card variant="outlined" sx={{ 
             height: '100%', 
             boxSizing: 'border-box',
@@ -697,7 +699,7 @@ const DashboardCards = () => {
                   flexWrap: { xs: 'wrap', sm: 'nowrap' },
                   gap: 1
                 }}>
-                  <Typography fontWeight="bold" sx={{ fontSize: { xs: '14px', sm: '16px' } }}>Sales Order</Typography>
+                  <Typography variant='textheader' fontWeight="bold" >Sales Order</Typography>
                   {/* <select style={{ 
                     fontSize: '12px', 
                     color: 'gray', 
@@ -722,7 +724,7 @@ const DashboardCards = () => {
                     value={salesOrderTimePeriod}
                     onChange={(e) => setSalesOrderTimePeriod(e.target.value)}
                     sx={{
-                      fontSize: '14px',
+                      fontSize: {xs: '12px', md: '14px'},
                       border: 'none',
                       background: 'transparent',
                       boxShadow: 'none',
@@ -862,13 +864,13 @@ const DashboardCards = () => {
             {/* Chart and header */}
             <Box sx={{ flex: 1, minWidth: 0, pb: 0 }}>
               <Paper variant="headercards" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Typography fontWeight="bold" sx={{ fontSize: 18 }}>Sales Order Summary (in EGP)</Typography>
+                <Typography variant='textheader' fontWeight="bold" sx={{ fontSize: 18 }}>Sales Order Summary (in EGP)</Typography>
                 <FormControl size="small" sx={{ minWidth: 120, m: 0 }}>
                   <Select
                     value={salesSummaryTimePeriod}
                     onChange={(e) => setSalesSummaryTimePeriod(e.target.value)}
                     sx={{
-                      fontSize: '14px',
+                      fontSize: {xs: '12px', md: '14px'},
                       border: 'none',
                       background: 'transparent',
                       boxShadow: 'none',
@@ -944,12 +946,12 @@ const DashboardCards = () => {
             <Divider orientation="vertical" flexItem sx={{ display: { xs: 'none', md: 'block' }, mx: 0, my: 3, borderColor: '#eee', width: '1px' }} />
             {/* Total Sales Summary */}
             <Box sx={{ minWidth: 260, maxWidth: 320, width: { xs: '100%', md: 320 }, p: 3, background: '#f8fcff', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', borderRadius: 2, border: '1px solid #f0f4f8', ml: { md: 0 }, mt: { xs: 2, md: 0 } }}>
-              <Typography sx={{ fontWeight: 500, fontSize: 16, mb: 2 }}>Total Sales</Typography>
+              <Typography sx={{ fontWeight: 500, fontSize: {xs: 14,md:16}, mb: 2 }}>Total Sales</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', background: '#eaf6ff', borderRadius: 2, p: 2, width: '100%' }}>
                 <Box sx={{ width: 12, height: 12, borderRadius: '50%', background: '#1976d2', mr: 2 }} />
                 <Box>
-                  <Typography sx={{ fontSize: 12, color: '#1976d2', fontWeight: 700, letterSpacing: 1 }}>DIRECT SALES</Typography>
-                  <Typography sx={{ fontWeight: 700, fontSize: 22, color: '#222', mt: 0.5 }}>
+                  <Typography sx={{ fontSize: {xs:10 ,md:12}, color: '#1976d2', fontWeight: 700, letterSpacing: 1 }}>DIRECT SALES</Typography>
+                  <Typography sx={{ fontWeight: 700, fontSize: {xs:16,md:22}, color: '#222', mt: 0.5 }}>
                     EGP{totalSales.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </Typography>
                 </Box>
